@@ -49,7 +49,6 @@ html {
 
 .title-container:hover {
     outline-color: white;
-    outline-offset: 5px;
     transform: scale(1.05);
     font-size: 12vw;
 }
@@ -96,8 +95,8 @@ html {
 
 .invert-toggle {
     position: relative;
-    background: none; /* No solid background */
-    border: none; /* Remove border */
+    background: none;
+    border: none;
     width: 10vw;
     height: 10vh;
     cursor: pointer;
@@ -107,9 +106,9 @@ html {
 
 .invert-icon {
     filter: invert();
-    width: 100%; /* Make icon take full button space */
+    width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensure the icon fits within the button */
+    object-fit: contain;
 }
 
 .eye {
@@ -122,4 +121,33 @@ html {
     transform: scale(0.1);
 
     z-index: 0;
+}
+
+.inventory {
+    position: fixed;
+
+    background-color: white;
+
+    width: 100vw;
+
+    height: 20vh;
+    bottom: -18vh;
+
+    font-family: "Marquee Moon";
+    font-size: 5vh;
+
+    display: flex;
+    justify-content: center;
+
+    outline: .4vw solid transparent;
+    outline-offset: .5vw;
+
+    transition: bottom 1s ease-in-out, outline-color 1s ease-in-out;
+
+}
+
+.inventory:hover {
+    bottom: 0;
+
+    outline-color: white;
 }
