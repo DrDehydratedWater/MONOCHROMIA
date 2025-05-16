@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'Marquee Moon';
+    src: url('./fonts/Marquee Moon.otf');
+}
+
+@font-face {
+    font-family: 'Bodoni Moda';
+    src: url('./fonts/BodoniModa.ttf');
+}
+
+:root {
+    --invert: 0;
+}
+
+button {
+    background-color: red;
+}
+
+html {
+    background-image: url("./images/background.jpg");
+    filter: invert(var(--invert));
+    background-size: cover;
+    transition: filter 0.5s ease-in-out;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    background-color: white;
+    width: 60vw;
+    height: 40vh;
+    margin: auto;
+    padding: 2vw;
+
+    font-family: "Marquee Moon";
+    color: black;
+    font-size: 10vw;
+    box-sizing: border-box;
+    
+    transition: outline-color 1s ease-in-out, transform 1s ease-in-out, font-size 1s ease-in-out;
+    outline: .5vw solid transparent;
+    outline-offset: .5vw;
+}
+
+.title-container:hover {
+    outline-color: white;
+    outline-offset: 5px;
+    transform: scale(1.05);
+    font-size: 12vw;
+}
+
+.title-container.clicked {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.title-container-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    background-color: transparent;
+    width: 60vw;
+    height: 40vh;
+    
+    z-index: 2;
+}
+
+
+.main-container {
+    width: 60vw;
+    height: 150vh;
+    margin: auto;
+    margin-bottom: 10vh;
+    margin-top: 10vh;
+}
+
+.description {
+    background-color: white;
+    width: 40vw;
+    height: auto;
+    padding: 1vw 2vw 2vw 2vw;
+    color: black;
+    font-family: "Bodoni Moda";
+    font-size: 1vw;
+    font-weight: 700;
+    outline: .5vw solid transparent;
+    outline-offset: .5vw;
+}
+
+.invert-toggle {
+    position: relative;
+    background: none; /* No solid background */
+    border: none; /* Remove border */
+    width: 10vw;
+    height: 10vh;
+    cursor: pointer;
+    padding: 0;
+    left: -5vh;
+}
+
+.invert-icon {
+    filter: invert();
+    width: 100%; /* Make icon take full button space */
+    height: 100%;
+    object-fit: contain; /* Ensure the icon fits within the button */
+}
