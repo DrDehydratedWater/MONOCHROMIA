@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Marquee Moon';
-    src: url('./fonts/Marquee Moon.otf');
+    src: url('../fonts/Marquee Moon.otf');
 }
 
 @font-face {
     font-family: 'Bodoni Moda';
-    src: url('./fonts/BodoniModa.ttf');
+    src: url('../fonts/BodoniModa.ttf');
 }
 
 :root {
@@ -17,7 +17,7 @@ button {
 }
 
 html {
-    background-image: url("./images/background.jpg");
+    background-image: url("../images/background.jpg");
     filter: invert(var(--invert));
     background-size: cover;
     transition: filter 0.5s ease-in-out;
@@ -43,6 +43,8 @@ html {
     transition: outline-color 1s ease-in-out, transform 1s ease-in-out, font-size 1s ease-in-out;
     outline: .5vw solid transparent;
     outline-offset: .5vw;
+
+    z-index: 1;
 }
 
 .title-container:hover {
@@ -53,8 +55,9 @@ html {
 }
 
 .title-container.clicked {
-    transform: rotate(5deg) scale(1.05);
+    transform: rotate(15deg) scale(1.05);
 }
+
 
 .title-container-button {
     display: flex;
@@ -107,4 +110,16 @@ html {
     width: 100%; /* Make icon take full button space */
     height: 100%;
     object-fit: contain; /* Ensure the icon fits within the button */
+}
+
+.eye {
+    position: absolute;
+
+    bottom: 18.3vh;
+
+    left: -1.9vw;
+
+    transform: scale(0.1);
+
+    z-index: 0;
 }
