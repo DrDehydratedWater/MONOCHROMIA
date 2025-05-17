@@ -124,16 +124,9 @@ html {
 }
 
 .eye-reset {
-    position: absolute;
-    transform: none;
-
+    position: relative;
+    top: -25vh;
     left: -18vw;
-    top: -15vh;
-
-    transform: scale(0.1);
-    
-    width: auto;
-    height: auto;
 }
 
 .inventory {
