@@ -49,8 +49,43 @@ function dropHandler(ev) {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text");
     const draggedElement = document.getElementById(data);
-
+    
     draggedElement.classList.add("eye-reset");
 
     ev.target.appendChild(draggedElement);
+
+    saveInventory();
 }
+
+function saveInventory() {
+    const slots = document.querySelectorAll(".slot");
+    const inventoryState = [];
+
+    slots.forEach(slot => {
+        if (slot.children.length > 0) {
+            inventoryState.push(slot.children[0].id);
+        } else {
+            inventoryState.push(null);
+        }
+    });
+
+    localStorage.setItem("inventory", JSON.stringify(inventoryState));
+}
+
+function loadInventory() {
+    const inventoryData = JSON.parse(localStorage.getItem("inventory"));
+    if (!inventoryData) return;
+
+    inventoryData.forEach((itemId, index) => {
+        if (itemId) {
+            const item = document.getElementById(itemId);
+            const slot = document.querySelectorAll(".slot")[index];
+            if (item && slot) {
+                item.classList.add("eye-reset");
+                slot.appendChild(item);
+            }
+        }
+    });
+}
+
+window.onload = loadInventory;
