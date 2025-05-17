@@ -54,23 +54,13 @@ html {
 }
 
 .title-container.clicked {
-    transform: rotate(15deg) scale(1.05);
+    transform: rotate(10deg) scale(1.05);
 }
 
-
-.title-container-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    background-color: transparent;
-    width: 60vw;
-    height: 40vh;
-    
-    z-index: 2;
+.title-text {
+    position: relative;
+    z-index: 1;
 }
-
 
 .main-container {
     width: 60vw;
@@ -129,50 +119,17 @@ html {
     left: -18vw;
 }
 
-.inventory {
-    position: fixed;
+.strange-slot-button {
+    position: absolute;
+    top: 51.5%;
+    left: 16.4%;
+    transform: translate(-50%, -50%);
+    
+    background-color: red;
+    width: .2em;
+    height: .7em;
 
-    background-color: white;
-
-    width: 90vw;
-
-    height: 30vh;
-    bottom: -24vh;
-
-    left: 5vw;
-
-    font-family: "Marquee Moon";
-    font-size: 5vh;
-    text-align: center;
-
-    padding: 0px;
-    margin: 0px;
-
-    outline: .4vw solid transparent;
-    outline-offset: .5vw;
-
-    transition: bottom 1s ease-in-out, outline-color 1s ease-in-out;
-
-}
-
-.inventory.clicked {
-    bottom: 0;
-
-    outline-color: white;
-}
-
-.inventory-slots {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    border-spacing: 10px;
-}
-
-.slot {
-    display: table-cell;
-    background-color: transparent;
-
-    border-left: .1vw solid black;
-    border-right: .1vw solid black;
-    height: 25vh;
+    font-size: inherit;
+    z-index: 3;
+    pointer-events: auto;
 }

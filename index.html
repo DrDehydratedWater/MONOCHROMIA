@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>MONOCHROMIA</title>
     <link href="./resources/css/index.css" type="text/css" rel="stylesheet">
+    <link href="./resources/css/inventory.css" type="text/css" rel="stylesheet">
     <script src="./resources/js/index.js"></script>
+    <script src="./resources/js/inventory.js"></script>
 </head>
 <body>
 <button class="invert-toggle" onclick="invert_toggle()">
@@ -13,9 +15,12 @@
 
 <img id="eye1" class="eye" src="./resources/images/eye.png" draggable="true", ondragstart="dragstartHandler(event)">
 <img id="eye2" class="eye" src="./resources/images/eye.png" draggable="true", ondragstart="dragstartHandler(event)">
-<div id="title-container" class="title-container">
-    <button class="title-container-button" onclick="title_container_lift()"></button>
-    MONOCHROMIA
+<div id="title-container" class="title-container" onclick="title_container_lift()">
+    
+    <span class="title-text">
+        MONOCHROMIA
+        <a class="strange-slot-button" href="strange-slot.html"></a> 
+    </span>
 </div>
 
 <div class="main-container">

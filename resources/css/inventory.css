@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Marquee Moon';
+    src: url('../fonts/Marquee Moon.otf');
+}
+
+
+.inventory {
+    position: fixed;
+    
+    background-color: white;
+
+    width: 90vw;
+
+    height: 30vh;
+    bottom: -24vh;
+
+    left: 5vw;
+
+    font-family: "Marquee Moon";
+    font-size: 5vh;
+    text-align: center;
+
+    padding: 0px;
+    margin: 0px;
+
+    outline: .4vw solid transparent;
+    outline-offset: .5vw;
+
+    transition: bottom 1s ease-in-out, outline-color 1s ease-in-out;
+
+}
+
+.inventory.clicked {
+    bottom: 0;
+
+    outline-color: white;
+}
+
+.inventory-slots {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 10px;
+}
+
+.slot {
+    display: table-cell;
+    background-color: transparent;
+
+    border-left: .1vw solid black;
+    border-right: .1vw solid black;
+    height: 25vh;
+}
