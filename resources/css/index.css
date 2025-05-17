@@ -123,15 +123,30 @@ html {
     z-index: 0;
 }
 
+.eye-reset {
+    position: absolute;
+    transform: none;
+
+    left: -18vw;
+    top: -15vh;
+
+    transform: scale(0.1);
+    
+    width: auto;
+    height: auto;
+}
+
 .inventory {
     position: fixed;
 
     background-color: white;
 
-    width: 100vw;
+    width: 90vw;
 
     height: 30vh;
     bottom: -29vh;
+
+    left: 5vw;
 
     font-family: "Marquee Moon";
     font-size: 5vh;
@@ -162,6 +177,9 @@ html {
 
 .slot {
     display: table-cell;
-    background-color: red;
+    background-color: transparent;
+
+    border-left: .1vw solid black;
+    border-right: .1vw solid black;
     height: 25vh;
 }

@@ -12,6 +12,7 @@
 </button>
 
 <img id="eye" class="eye" src="./resources/images/eye.png" draggable="true", ondragstart="dragstartHandler(event)">
+<img id="eye" class="eye" src="./resources/images/eye.png" draggable="true", ondragstart="dragstartHandler(event)">
 <div id="title-container" class="title-container">
     <button class="title-container-button" onclick="title_container_lift()"></button>
     MONOCHROMIA
@@ -27,13 +28,13 @@
 <div id="inventory" class="inventory" onclick="inventory_toggle()">
     <div class="inventory-title">Inventory</div>
     <div class="inventory-slots">
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
+        <div class="slot" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+        <div class="slot" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+        <div class="slot" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+        <div class="slot" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+        <div class="slot" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+        <div class="slot" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+        <div class="slot" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
     </div>
 </div>
 </body>

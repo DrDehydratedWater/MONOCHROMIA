@@ -48,5 +48,9 @@ function dragoverHandler(ev) {
 function dropHandler(ev) {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    const draggedElement = document.getElementById(data);
+
+    draggedElement.classList.add("eye-reset");
+
+    ev.target.appendChild(draggedElement);
 }
