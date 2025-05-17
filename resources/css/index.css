@@ -130,14 +130,15 @@ html {
 
     width: 100vw;
 
-    height: 20vh;
-    bottom: -18vh;
+    height: 30vh;
+    bottom: -29vh;
 
     font-family: "Marquee Moon";
     font-size: 5vh;
+    text-align: center;
 
-    display: flex;
-    justify-content: center;
+    padding: 0px;
+    margin: 0px;
 
     outline: .4vw solid transparent;
     outline-offset: .5vw;
@@ -146,8 +147,21 @@ html {
 
 }
 
-.inventory:hover {
+.inventory.clicked {
     bottom: 0;
 
     outline-color: white;
+}
+
+.inventory-slots {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 10px;
+}
+
+.slot {
+    display: table-cell;
+    background-color: red;
+    height: 25vh;
 }

@@ -1,5 +1,6 @@
 let invert = false;
 let title_container_lift_toggle = false;
+let inventory_open = false
 
 function invert_toggle() {
     if (invert === true) {
@@ -13,15 +14,39 @@ function invert_toggle() {
 
 function title_container_lift() {
     const titleContainer = document.getElementById("title-container");
-    const eye = document.getElementById("eye");
     
     if (title_container_lift_toggle === false) {
         titleContainer.classList.add('clicked');
-        eye.classList.add('rotate');
         title_container_lift_toggle = true;
     } else {
         titleContainer.classList.remove('clicked');
-        eye.classList.add('rotate');
         title_container_lift_toggle = false;
     }
+}
+
+function inventory_toggle() {
+    const inventory = document.getElementById("inventory");
+
+    if (inventory_open == false) {
+        inventory.classList.add('clicked');
+        inventory_open = true;
+    } else {
+        inventory.classList.remove('clicked');
+        inventory_open = false;
+    }
+}
+
+
+function dragstartHandler(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function dragoverHandler(ev) {
+    ev.preventDefault();
+}
+
+function dropHandler(ev) {
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
 }
