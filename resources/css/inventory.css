@@ -51,3 +51,31 @@
     border-right: .1vw solid black;
     height: 25vh;
 }
+
+.eye1 {
+    position: relative;
+    top: -25vh;
+    left: -18vw;
+
+    bottom: 18.3vh;
+
+    left: -1.9vw;
+
+    transform: scale(0.1);
+
+    z-index: 0;
+}
+
+.eye2 {
+    position: relative;
+    top: -25vh;
+    left: -18vw;
+
+    bottom: 18.3vh;
+
+    left: -1.9vw;
+
+    transform: scale(0.1);
+
+    z-index: 0;
+}

@@ -108,15 +108,9 @@ html {
 
     left: -1.9vw;
 
-    transform: scale(1);
+    transform: scale(0.1);
 
     z-index: 0;
-}
-
-.eye-reset {
-    position: relative;
-    top: -25vh;
-    left: -18vw;
 }
 
 .strange-slot-button {
