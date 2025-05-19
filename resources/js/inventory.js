@@ -1,5 +1,6 @@
 let inventory_open = false;
 
+// Just moves the inventory up and down
 function inventory_toggle() {
     const inventory = document.getElementById("inventory");
 
@@ -26,7 +27,7 @@ function saveInventory() {
         }
     });
 
-    // ✅ Now collect picked-up state after inventoryState is filled
+    // Now collect picked-up state after inventoryState is filled
     const itemsState = {};
     inventoryState.forEach(itemId => {
         if (itemId) {
@@ -126,6 +127,11 @@ function dropHandler(ev) {
     const itemId = draggedElement.id;
     
     draggedElement.className = `${itemId.substring(0, itemId.length - 1)}-item`;
+
+
+    if ((draggedElement.id == "eye1" || "eye2") && (ev.target.id == "eye-slot")) {
+        console.log("Eye slot activated") // I dont like this
+    }
 
     ev.target.appendChild(draggedElement);
 
