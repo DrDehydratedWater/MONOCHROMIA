@@ -1,0 +1,7 @@
+html {
+    background-image: url("../images/eye slot.png");
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-position: 0% 8%;
+    transition: filter 0.5s ease-in-out;
+}

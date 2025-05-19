@@ -19,7 +19,7 @@ function saveInventory() {
     slots.forEach(slot => {
         if (slot.children.length > 0) {
             const item = slot.children[0];
-            item.setAttribute("data-picked-up", "true"); // ✅ Mark as picked up
+            item.setAttribute("data-picked-up", "true"); // Mark as picked up
             inventoryState.push(item.id);
         } else {
             inventoryState.push(null);
@@ -37,7 +37,7 @@ function saveInventory() {
         }
     });
 
-    // ✅ Save both to localStorage
+    // Save both to localStorage
     localStorage.setItem("inventory", JSON.stringify(inventoryState));
     localStorage.setItem("itemsState", JSON.stringify(itemsState));
 }
@@ -49,7 +49,7 @@ function loadInventory() {
     // If no inventory data is available, exit early
     if (!inventoryData) return;
 
-    document.querySelectorAll("#eye, #eye1, #eye2").forEach(item => {
+    document.querySelectorAll("#eye1, #eye2").forEach(item => {
         item.remove();
     });
 
@@ -65,14 +65,17 @@ function loadInventory() {
             // If the item doesn't exist in the DOM, create it
             if (!item) {
                 // Create the item dynamically if not found
+                console.log(itemId)
+                console.log(`resources/images/${itemId.substring(0, itemId.length - 1)}.png`)
+
                 item = document.createElement("div");
                 item.id = itemId;  // Ensure the item ID matches the saved ID
-                item.classList.add("eye1");  // Or use the correct class for your item
+                item.classList.add(`${itemId.substring(0, itemId.length - 1)}-item`);  // Or use the correct class for your item
                 item.setAttribute("draggable", "true");
                 item.addEventListener("dragstart", dragstartHandler);
 
                 const img = document.createElement("img");
-                img.src = "resources/images/eye.png";  // Customize this path as needed
+                img.src = `resources/images/${itemId.substring(0, itemId.length - 1)}.png`;
                 img.alt = itemId;
 
                 item.appendChild(img);
@@ -120,8 +123,9 @@ function dropHandler(ev) {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text");
     const draggedElement = document.getElementById(data);
+    const itemId = draggedElement.id;
     
-    draggedElement.classList.add("eye-reset");
+    draggedElement.className = `${itemId.substring(0, itemId.length - 1)}-item`;
 
     ev.target.appendChild(draggedElement);
 
@@ -138,3 +142,5 @@ window.onload = () => {
         }
     });
 };
+
+loadInventory();
