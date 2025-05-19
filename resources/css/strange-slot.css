@@ -1,7 +1,45 @@
+@font-face {
+    font-family: 'Marquee Moon';
+    src: url('../fonts/Marquee Moon.otf');
+}
+
 html {
     background-image: url("../images/eye slot.png");
     background-size: cover;
     background-repeat: repeat-x;
     background-position: 0% 8%;
     transition: filter 0.5s ease-in-out;
+}
+
+.back-button {
+    position: fixed;
+    bottom: 40vh;
+    left: -1vw;
+    padding: 1vw;
+    padding-left: 4vw;
+
+    font-family: "Marquee Moon";
+    font-size: 8vw;
+
+    background-color: white;
+
+    text-decoration: none;
+
+    transition: transform 0.5s ease;
+}
+
+.back-button:link {
+    color: black;
+}
+
+.back-button:visited {
+    color: black;
+}
+
+.back-button:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.back-button:active {
+    color: black;
 }
