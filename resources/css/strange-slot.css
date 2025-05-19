@@ -43,3 +43,14 @@ html {
 .back-button:active {
     color: black;
 }
+
+.eye-slot {
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
+
+    bottom: 40.5vh;
+    left: 101vh;
+
+    background-color: transparent;
+}
