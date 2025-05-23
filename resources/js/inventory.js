@@ -1,6 +1,5 @@
 let inventory_open = false;
 
-// Just moves the inventory up and down
 function inventory_toggle() {
     const inventory = document.getElementById("inventory");
 
@@ -20,14 +19,13 @@ function saveInventory() {
     slots.forEach(slot => {
         if (slot.children.length > 0) {
             const item = slot.children[0];
-            item.setAttribute("data-picked-up", "true"); // Mark as picked up
+            item.setAttribute("data-picked-up", "true"); 
             inventoryState.push(item.id);
         } else {
             inventoryState.push(null);
         }
     });
 
-    // Now collect picked-up state after inventoryState is filled
     const itemsState = {};
     inventoryState.forEach(itemId => {
         if (itemId) {
@@ -38,7 +36,6 @@ function saveInventory() {
         }
     });
 
-    // Save both to localStorage
     localStorage.setItem("inventory", JSON.stringify(inventoryState));
     localStorage.setItem("itemsState", JSON.stringify(itemsState));
 }
@@ -47,36 +44,32 @@ function saveInventory() {
 function loadInventory() {
     const inventoryData = JSON.parse(localStorage.getItem("inventory"));
 
-    // If no inventory data is available, exit early
     if (!inventoryData) return;
 
-    document.querySelectorAll("#eye1, #eye2").forEach(item => {
+    document.querySelectorAll("#eye").forEach(item => {
         item.remove();
     });
 
     const slots = document.querySelectorAll(".slot");
 
-    // Loop through the saved inventory data
     inventoryData.forEach((itemId, index) => {
         const slot = slots[index];
 
         if (itemId) {
-            let item = document.getElementById(itemId);  // Try to find item by its ID in the DOM
+            let item = document.getElementById(itemId);  
 
-            // If the item doesn't exist in the DOM, create it
             if (!item) {
-                // Create the item dynamically if not found
                 console.log(itemId)
-                console.log(`resources/images/${itemId.substring(0, itemId.length - 1)}.png`)
+                console.log(`resources/images/${itemId}.png`)
 
                 item = document.createElement("div");
-                item.id = itemId;  // Ensure the item ID matches the saved ID
-                item.classList.add(`${itemId.substring(0, itemId.length - 1)}-item`);  // Or use the correct class for your item
+                item.id = itemId;
+                item.classList.add(`${itemId}-item`);
                 item.setAttribute("draggable", "true");
                 item.addEventListener("dragstart", dragstartHandler);
 
                 const img = document.createElement("img");
-                img.src = `resources/images/${itemId.substring(0, itemId.length - 1)}.png`;
+                img.src = `resources/images/${itemId}.png`;
                 img.alt = itemId;
 
                 item.appendChild(img);
@@ -84,12 +77,11 @@ function loadInventory() {
 
             // Apply the picked-up state to the item
             if (itemId && item.getAttribute("data-picked-up") !== "true") {
-                item.setAttribute("data-picked-up", "true");  // Mark it as picked up
+                item.setAttribute("data-picked-up", "true"); 
             }
 
-            // Add the item to the slot if it isn't already there
             if (slot && !slot.contains(item)) {
-                slot.appendChild(item);  // Add item to slot if it's not there
+                slot.appendChild(item);
             }
         }
     });
@@ -98,15 +90,12 @@ function loadInventory() {
 
 
 function dragstartHandler(ev) {
-    // Ensure the correct draggable element is targeted
     let target = ev.target;
 
-    // If the image is dragged, use the parent
     if (!target.id && target.parentElement?.id) {
         target = target.parentElement;
     }
 
-    // Still no ID? Abort
     if (!target.id) {
         console.warn("No ID found for dragged element:", target);
         return;
@@ -122,26 +111,44 @@ function dragoverHandler(ev) {
 
 function dropHandler(ev) {
     ev.preventDefault();
+
     const data = ev.dataTransfer.getData("text");
     const draggedElement = document.getElementById(data);
     const itemId = draggedElement.id;
-    
-    draggedElement.className = `${itemId.substring(0, itemId.length - 1)}-item`;
 
+    draggedElement.className = `${itemId}-item`;
 
-    if ((draggedElement.id == "eye1" || "eye2") && (ev.target.id == "eye-slot")) {
-        console.log("Eye slot activated") // I dont like this
+    const targetSlot = ev.target;
+
+    if (itemId === "eye" && targetSlot.id === "eye-slot") {
+        console.log("Eye slot activated");
+
+        targetSlot.appendChild(draggedElement);
+
+        draggedElement.style.transition = "opacity 1s ease";
+        draggedElement.style.opacity = 1;
+
+        requestAnimationFrame(() => {
+            draggedElement.style.opacity = 0;
+
+            setTimeout(() => {
+                draggedElement.remove();
+                saveInventory();
+            }, 1000);
+        });
+
+        return;
     }
 
-    ev.target.appendChild(draggedElement);
-
+    targetSlot.appendChild(draggedElement);
     saveInventory();
 }
+
+
 
 window.onload = () => {
     loadInventory();
 
-    // Ensure dragstart handler is attached to any existing draggable items
     document.querySelectorAll('[draggable="true"]').forEach(el => {
         if (!el.hasAttribute("ondragstart")) {
             el.addEventListener("dragstart", dragstartHandler);
